@@ -10,8 +10,12 @@
             let computerScore = 0;
             let rounds = playerScore + computerScore;
             let playerSelection = window.prompt("rock, paper, or scissors?").toLowerCase();
-                    /* add code that evaluates input and prompts again if selection is not rock, paper, or scissors.*/
-                    let computerSelection = computerPlay();
+            if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors"){
+                let tryAgain = window.prompt("Try again");
+                playerSelection = tryAgain;
+            }
+            /* add code that evaluates input and prompts again if selection is not rock, paper, or scissors.*/
+            let computerSelection = computerPlay();
             
             /*Write a function called computerPlay that randomly returns/
             'Rock', 'Paper', or 'Scissors.''*/
@@ -73,7 +77,8 @@
                     console.log("Sorry, you lost the game. The computer won ")
                 }
                 console.log(`Final Scores\nYou: ${playerScore} Computer: ${computerScore}`)
-            }
+            };
+            game;
         </script>
     </body>
 </html>
