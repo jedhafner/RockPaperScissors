@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock, Paper, Scissors</title>
+    </head>
+    <body>
+        <script>
+            let playerScore = 0;
+            let computerScore = 0;
+            let rounds = playerScore + computerScore;
+            let playerSelection = window.prompt("rock, paper, or scissors?").toLowerCase();
+                    /* add code that evaluates input and prompts again if selection is not rock, paper, or scissors.*/
+                    let computerSelection = computerPlay();
+            
+            /*Write a function called computerPlay that randomly returns/
+            'Rock', 'Paper', or 'Scissors.''*/
+            function computerPlay(){
+                num = Math.floor(Math.random()*3);
+                switch(num){
+                    case 0: return'rock';
+                    break;
+                    case 1: return 'paper';
+                    break;
+                    case 2: return 'scissors';
+                }
+            }
+            /*Write a function that plays a single round of Rock Paper Scissors./
+            The function should take two parameters - the playerSelection and/
+            computerSelection - and then return a string that declares the winner/
+            of the round like so: "You Lose! Paper beats Rock." Make sure playerSelection/
+            is NOT case sensitive.*/
+            function playRound(playerSelection, computerSelection){
+                let playerWins = `Player wins! ${playerSelection} beats ${computerSelection}.`;
+                let computerLoses = `Computer wins. ${computerSelection} beats $(playerSelection)`;
+                if (playerSelection === computerSelection){
+                    return "It's a...tie? Go again!";
+                } else if (playerSelection === "rock"){
+                    if (computerSelection === "paper"){
+                        return computerWins;
+                        computerScore++;
+                    } else {
+                        return playerWins;
+                        playerScore++;
+                    }
+                    } else if (playerSelection === "paper"){
+                        if (computerSelection === "scissors"){
+                        return computerWins;
+                        computerScore++;
+                    } else {
+                        return playerWins;
+                        playerScore++;
+                    }
+                } else {
+                    if (computerSelection === "rock"){
+                    return computerWins;
+                    computerScore++;
+                    } else {
+                        return playerWins;
+                    computerScore++;}
+                }
+            }
+            /*Write a NEW function called game(). Use the previous function inside of/
+             this one to play a 5 round game that keeps score and reports a winner or/
+              loser at the end.*/
+            function game(){
+                for (rounds = 0; rounds <5; rounds++){
+                    console.log(playRound(playerSelection, computerSelection));
+                }
+                if (playerScore > computerScore){
+                    console.log("CONGRATULATIONS!!! You won the game!")
+                } else {
+                    console.log("Sorry, you lost the game. The computer won ")
+                }
+                console.log(`Final Scores\nYou: ${playerScore} Computer: ${computerScore}`)
+            }
+        </script>
+    </body>
+</html>
