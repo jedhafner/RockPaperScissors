@@ -5,80 +5,81 @@
         <title>Rock, Paper, Scissors</title>
     </head>
     <body>
+        <h1>Welcome to Rock, Paper, Scissors!</h1>
+       
         <script>
             let playerScore = 0;
             let computerScore = 0;
-            let rounds = playerScore + computerScore;
-            let playerSelection = window.prompt("rock, paper, or scissors?").toLowerCase();
-            if (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors"){
-                let tryAgain = window.prompt("Try again");
-                playerSelection = tryAgain;
-            }
-            /* add code that evaluates input and prompts again if selection is not rock, paper, or scissors.*/
-            let computerSelection = computerPlay();
-            
+            let gameSummary;
+
             /*Write a function called computerPlay that randomly returns/
             'Rock', 'Paper', or 'Scissors.''*/
             function computerPlay(){
-                num = Math.floor(Math.random()*3);
+                let num = Math.floor(Math.random()*3);
                 switch(num){
-                    case 0: return'rock';
+                    case 0: return 'rock';
                     break;
                     case 1: return 'paper';
                     break;
                     case 2: return 'scissors';
                 }
             }
+            
             /*Write a function that plays a single round of Rock Paper Scissors./
             The function should take two parameters - the playerSelection and/
             computerSelection - and then return a string that declares the winner/
             of the round like so: "You Lose! Paper beats Rock." Make sure playerSelection/
             is NOT case sensitive.*/
             function playRound(playerSelection, computerSelection){
+            /* add code that evaluates input and prompts again if selection is not rock, paper, or scissors.*/
                 let playerWins = `Player wins! ${playerSelection} beats ${computerSelection}.`;
-                let computerLoses = `Computer wins. ${computerSelection} beats $(playerSelection)`;
+                let computerWins = `Computer wins. ${computerSelection} beats ${playerSelection}`;
                 if (playerSelection === computerSelection){
                     return "It's a...tie? Go again!";
                 } else if (playerSelection === "rock"){
                     if (computerSelection === "paper"){
-                        return computerWins;
                         computerScore++;
+                        return computerWins;
                     } else {
-                        return playerWins;
                         playerScore++;
+                        return playerWins;
                     }
                     } else if (playerSelection === "paper"){
                         if (computerSelection === "scissors"){
-                        return computerWins;
-                        computerScore++;
+                            computerScore++;
+                            return computerWins;
                     } else {
-                        return playerWins;
                         playerScore++;
+                        return playerWins;
                     }
                 } else {
                     if (computerSelection === "rock"){
-                    return computerWins;
-                    computerScore++;
+                        computerScore++;
+                        return computerWins;
                     } else {
-                        return playerWins;
-                    computerScore++;}
+                        playerScore++;
+                        return playerWins;}
                 }
             }
+
             /*Write a NEW function called game(). Use the previous function inside of/
              this one to play a 5 round game that keeps score and reports a winner or/
               loser at the end.*/
             function game(){
-                for (rounds = 0; rounds <5; rounds++){
-                    console.log(playRound(playerSelection, computerSelection));
+                let rounds;
+                for (rounds = 1; rounds < 6; rounds++) {
+                    computerSelection = computerPlay();
+                    playerSelection = window.prompt(`ROUND: ${rounds} computer score: ${computerScore} | your Score: ${playerScore} | Ready, set, shoot!`, 'rock');
+                    playRound(playerSelection, computerSelection);
                 }
                 if (playerScore > computerScore){
-                    console.log("CONGRATULATIONS!!! You won the game!")
+                    gameSummary = (`CONGRATULATIONS!!! You won the game! computer: ${computerScore} player: ${playerScore}`)
                 } else {
-                    console.log("Sorry, you lost the game. The computer won ")
-                }
-                console.log(`Final Scores\nYou: ${playerScore} Computer: ${computerScore}`)
+                    gameSummary =(`Sorry, you lost the game. The computer won. computer: ${computerScore} player: ${playerScore}`)
+                };
+                return gameSummary;
             };
-            game;
+            console.log(game());
         </script>
     </body>
 </html>
