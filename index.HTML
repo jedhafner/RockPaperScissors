@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="rock-paper-scissors.css">
         <meta charset="UTF-8">
         <title>Rock, Paper, Scissors</title>
     </head>
     <body>
-        <h1>Welcome to Rock, Paper, Scissors!</h1>
-        <p>First to 5 points wins.</p>
-        <!--Create three buttons, one for each selection.
-            Add an event listener to the buttons that calls
-            your playRound function with the correct 
-            playerSelection every time a button is clicked. 
-            (you can keep the console.logs for this step)-->
-        <section>
-            <button id= "rock">Rock</button>
-            <button id= "paper">Paper</button>
-            <button id= "scissors">Scissors</button>
-        </section>
-        <div id = 'computer'></div>
-       <!--Add a div for displaying results and change all 
-        of your console.logs into DOM methods. Display the
-        running score, and announce a winner of the game once
-        one player reaches 5 points.-->
-        <div id = 'Display'>
+        <header>
+            <h1>Welcome to Rock, Paper, Scissors!</h1>
+        </header>
+        <div class = "display">
+            <div id = 'scoreDisplay'>
+               First to 5 wins.
+            </div>
+            <div id = 'resultsDisplay'>
+                Who will be victorious?
+            </div>
+        </div>
+        <div class ="center">
+            <div class ="weaponOfChoice">
+                <p id = "playerWeapon">
+                    Your choice
+                </p>
+                <p id = "compWeapon">
+                    Computer's choice
+                </p>
+            </div>
+        </div>
+        <div class = "bottom">   
+            <section>
+                <button id= "rock">rock</button>
+                <button id= "paper">paper</button>
+                <button id= "scissors">scissors</button>
+            </section>
+
         </div>
         <script src = 'index.js'></script>
     </body>
